@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public abstract class Entity
 {
     private int hp;
@@ -46,5 +48,10 @@ public abstract class Entity
     public void SetStamina(int value)
     {
         stamina = value;
+    }
+    public void TakeDamage(int value)
+    {
+        hp -= value;
+        
     }
 }
