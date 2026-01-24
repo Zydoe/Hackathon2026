@@ -5,11 +5,9 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     private float moveSpeed = 1;
-    public Camera playerCam;
     public Rigidbody2D rb;
-    private Animator anim;
-
-    public GameObject playerSprite;
+    public Animator anim;
+    public Player player;
 
     public SpriteRenderer playerSR;
 
@@ -17,8 +15,7 @@ public class playerController : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
-        moveSpeed = transform.GetComponent<Player>().GetPlayerSpeed();
+        moveSpeed = player.GetPlayerSpeed();
     }
     void Update()
     {

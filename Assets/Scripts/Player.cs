@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private PlayerData playerData;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerData = new PlayerData("Hero", 1, 0, 10, 1, 1, 20);
     }
@@ -36,6 +36,16 @@ public class Player : MonoBehaviour
     public void SetPlayerHp(int hp)
     {
         playerData.SetHp(hp);
+    }
+
+    public int GetPlayerMaxHp()
+    {
+        return playerData.GetMaxHp();
+    }
+
+    public void SetPlayerMaxHp(int maxHp)
+    {
+        playerData.SetMaxHp(maxHp);
     }
 
     public int GetPlayerSpeed()
