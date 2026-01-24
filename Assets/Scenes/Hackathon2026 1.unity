@@ -504,7 +504,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1fe898ec659bf4e81c3851a6d73fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryPrefab: {fileID: 0}
+  _maxHitPoints: 0
+  _startingHitPoints: 0
+  _hitPoints: {fileID: 11400000, guid: 11b178b1f5a41d04aa86a7d0c5e881a0, type: 2}
+  _healthBarPrefab: {fileID: 3906576221406484519, guid: d5816406ed7faf64bad499591670f1cb, type: 3}
+  _inventoryPrefab: {fileID: 3232752821740084398, guid: 7a3841ed6dce5c140853633dc195ae2d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Diagnostics.Contracts;
 
 public class PlayerInventory : MonoBehaviour{
 
@@ -10,37 +11,20 @@ public class PlayerInventory : MonoBehaviour{
     //         collision.gameObject.SetActive(false);
     //     }
     // }
+    public float currentHealth;
+    [SerializeField] public float maxHealth;
+    [SerializeField] private HealthBar _healthBarPrefab; private
+    HealthBar _healthBar;
     [SerializeField] Inventory _inventoryPrefab; 
     private Inventory _inventory;
 
-    // void Start() {
-    //     _hitPoints.Value = _startingHitPoints;
-    //     _healthBar = Instantiate(_healthBarPrefab);
-    //     _healthBar.Character = this;
+    void Start() {
+        currentHealth = maxHealth;
+        _healthBar = Instantiate(_healthBarPrefab);
+        _healthBar.Character = this;
 
-    //     _inventory = Instantiate(_inventoryPrefab);
-    // }
-    // void OnTriggerEnter2D(Collider2D collision) {
-    //     if (collision.gameObject.CompareTag("PickUp")){
-    //         ItemData hitObject =
-    //         collision.gameObject.GetComponent<Consumable>().Item;
-    //         if (hitObject != null){
-    //             print("Hit: " + hitObject.ObjectName);
-    //             switch (hitObject.Type){
-    //             case ItemData.ItemType.Coin:
-    //                 break;
-    //             case ItemData.ItemType.Health:
-    //                 AdjustHitPoints(hitObject.Quantity);
-    //                 break;
-    //             }
-    //             collision.gameObject.SetActive(false);
-    //         }
-    //     }
-    // }
-    // public void AdjustHitPoints(int amount) {
-    //     _hitPoints = _hitPoints + amount;
-    //     print("Adjusted hitpoints by: " + amount + ". New value: " + _hitPoints);
-    // }
+        _inventory = Instantiate(_inventoryPrefab);
+    }
 
     // public override void ResetCharacter() {
     //     _inventory = Instantiate(_inventoryPrefab);
@@ -82,18 +66,18 @@ public class PlayerInventory : MonoBehaviour{
             }
         }
     }
-    // public bool AdjustHitPoints(int amount) {
-    //     if (_hitPoints.Value < _maxHitPoints) {
-    //         _hitPoints.Value = _hitPoints.Value + amount;
-    //         print("Adjusted HP by: " + amount + ". New value: " +
-    //         _hitPoints.Value);
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public bool AdjustHitPoints(int amount) {
+        if (currentHealth < maxHealth) {
+            currentHealth = currentHealth + amount;
+            print("Adjusted HP by: " + amount + ". New value: " +
+            currentHealth);
+            return true;
+        }
+        return false;
+    }
 
 
-    // public override IEnumerator DamageCharacter(int damage, float interval) {
+    // public IEnumerator DamageCharacter(int damage, float interval) {
     //     while (true) {
     //         _hitPoints.Value = _hitPoints.Value - damage;
     //         if (_hitPoints.Value <= float.Epsilon) {
