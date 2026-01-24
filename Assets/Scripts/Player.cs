@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerData = new PlayerData("Hero", 1, 0, 10, 1, 1, 20);
-        Debug.Log("Player Name: " + playerData.GetPlayerName());
     }
 
     // Update is called once per frame
