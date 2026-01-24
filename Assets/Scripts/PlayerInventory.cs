@@ -2,98 +2,88 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Diagnostics.Contracts;
 
 public class PlayerInventory : MonoBehaviour{
 
-    // void OnTriggerEnter2D(Collider2D collision) {
-    //     if (collision.gameObject.CompareTag("PickUp")) {
-    //         collision.gameObject.SetActive(false);
-    //     }
-    // }
+
+    public float currentHealth;
+    [SerializeField] public float maxHealth;
+    [SerializeField] private HealthBar _healthBarPrefab; private
+    HealthBar _healthBar;
     [SerializeField] Inventory _inventoryPrefab; 
     private Inventory _inventory;
+    
 
-    // void Start() {
-    //     _hitPoints.Value = _startingHitPoints;
-    //     _healthBar = Instantiate(_healthBarPrefab);
-    //     _healthBar.Character = this;
+    void Start() {
+        currentHealth = maxHealth;
+        _healthBar = Instantiate(_healthBarPrefab);
+        _healthBar.Character = this;
 
-    //     _inventory = Instantiate(_inventoryPrefab);
-    // }
-    // void OnTriggerEnter2D(Collider2D collision) {
-    //     if (collision.gameObject.CompareTag("PickUp")){
-    //         ItemData hitObject =
-    //         collision.gameObject.GetComponent<Consumable>().Item;
-    //         if (hitObject != null){
-    //             print("Hit: " + hitObject.ObjectName);
-    //             switch (hitObject.Type){
-    //             case ItemData.ItemType.Coin:
-    //                 break;
-    //             case ItemData.ItemType.Health:
-    //                 AdjustHitPoints(hitObject.Quantity);
-    //                 break;
-    //             }
-    //             collision.gameObject.SetActive(false);
-    //         }
-    //     }
-    // }
-    // public void AdjustHitPoints(int amount) {
-    //     _hitPoints = _hitPoints + amount;
-    //     print("Adjusted hitpoints by: " + amount + ". New value: " + _hitPoints);
-    // }
+        _inventory = Instantiate(_inventoryPrefab);
+    }
 
-    // public override void ResetCharacter() {
-    //     _inventory = Instantiate(_inventoryPrefab);
-    //     _healthBar = Instantiate(_healthBarPrefab);
-    //     _healthBar.Character = this;
-    //     _hitPoints.Value = _startingHitPoints;
-    // }
-    // private void OnEnable() {
-    //     ResetCharacter();
-    // }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) _inventory.SetSelectedSlot(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) _inventory.SetSelectedSlot(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) _inventory.SetSelectedSlot(2);
+        if (Input.GetMouseButtonDown(0))
+        {
+            print("USE ITEM");
+            UseItem(_inventory.selectedIndex);
+        }
+    }
+
+
+    void UseItem(int index)
+    {
+        ItemData item = _inventory._items[_inventory.selectedIndex];
+        if (item != null)
+        {
+            Debug.Log("Used: " + item.ObjectName);
+            bool shouldDisappear = false;
+            switch (item.Type)
+            {
+                case ItemData.ItemType.Health:
+                    Debug.Log("Healing...");
+                    shouldDisappear = AdjustHitPoints(2);
+                    break;
+
+            }
+            if (shouldDisappear)
+            {
+                Debug.Log("Removing");
+                _inventory.RemoveItem(item);
+            }
+
+
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("PickUp")) {
             ItemData hitObject =collision.gameObject.GetComponent<Consumable>().Item;
             if (hitObject != null) {
-                print("Hit: " + hitObject.ObjectName);
-                bool shouldDisappear = true;
-                switch (hitObject.Type) {
-                case ItemData.ItemType.Coin:
-                    //shouldDisappear = true;
-                    // shouldDisappear = _inventory.AddItem(hitObject);
-                    break;
-                case ItemData.ItemType.Health:
-                    // shouldDisappear =
-                    // AdjustHitPoints(hitObject.Quantity);
-                    break;
-                
-                case ItemData.ItemType.Medkit:
-                    // shouldDisappear =AdjustHitPoints(hitObject.Quantity);
-                    break;
-                case ItemData.ItemType.Key:
-                    // shouldDisappear = _inventory.AddItem(hitObject);
-                    break;
-                case ItemData.ItemType.Fruit:
-                    // shouldDisappear = _inventory.AddItem(hitObject);
-                    break;
-                }
-                if (shouldDisappear)
-                    collision.gameObject.SetActive(false);
+                Debug.Log("HIT OBJECT)");
+                _inventory.AddItem(hitObject);
+                collision.gameObject.SetActive(false);
+
             }
         }
     }
-    // public bool AdjustHitPoints(int amount) {
-    //     if (_hitPoints.Value < _maxHitPoints) {
-    //         _hitPoints.Value = _hitPoints.Value + amount;
-    //         print("Adjusted HP by: " + amount + ". New value: " +
-    //         _hitPoints.Value);
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public bool AdjustHitPoints(int amount) {
+        if (currentHealth < maxHealth) {
+            currentHealth = currentHealth + amount;
+            print("Adjusted HP by: " + amount + ". New value: " +
+            currentHealth);
+            return true;
+        }
+        return false;
+    }
+    
 
-
-    // public override IEnumerator DamageCharacter(int damage, float interval) {
+    // public IEnumerator DamageCharacter(int damage, float interval) {
     //     while (true) {
     //         _hitPoints.Value = _hitPoints.Value - damage;
     //         if (_hitPoints.Value <= float.Epsilon) {

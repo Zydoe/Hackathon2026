@@ -9,7 +9,11 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject _slotPrefab;
     private const int _numSlots = 5;
     private Image[] _itemImages = new Image[_numSlots]; 
-    private ItemData[] _items = new ItemData[_numSlots]; 
+    [SerializeField] public ItemData[] _items = new ItemData[_numSlots]; 
+    public Color32 selectedColor = new Color32(255, 255, 255, 255); // white
+    public Color32 unselectedColor = new Color32(140, 140, 140, 255); // grey
+    public int selectedIndex = 0;
+
     private GameObject[] _slots = new GameObject[_numSlots];
     public void Start() {
         CreateSlots();
@@ -50,5 +54,66 @@ public class Inventory : MonoBehaviour
             }
         }
         return false;
+    }
+    
+    public bool RemoveItem(ItemData itemToRemove)
+    {
+        for (int i = 0; i < _items.Length; i++)
+        {
+            // Check if the slot has the item we're trying to remove
+            if (_items[i] != null && _items[i].Type == itemToRemove.Type)
+            {
+                _items[i].Quantity--;
+
+                Slot slotScript = _slots[i].GetComponent<Slot>();
+                TextMeshProUGUI quantityText = slotScript.QtyText;
+
+                if (_items[i].Quantity <= 0)
+                {
+                    // Remove item completely
+                    _items[i] = null;
+                    _itemImages[i].sprite = null;
+                    _itemImages[i].enabled = false;
+                    quantityText.enabled = false;
+                }
+                else
+                {
+                    // Update quantity display
+                    quantityText.text = _items[i].Quantity.ToString();
+                }
+
+                SetSelectedSlot(selectedIndex);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void SetSelectedSlot(int index)
+    {
+        selectedIndex = index;
+
+        for (int i = 0; i < _slots.Length; i++)
+        {
+            if (i == index)
+                _slots[i].GetComponentInChildren<Image>().color = selectedColor;
+            else
+                _slots[i].GetComponentInChildren<Image>().color = unselectedColor;
+        }
+
+    }
+        //Check if player has the item
+    public bool HasItem(ItemData.ItemType item)
+    {
+        foreach (ItemData i in _items)
+        {
+            if(i == null){
+                return false;
+            }
+            if (i.Type == item)
+                return true;
+        }
+        return false;
+
     }
 }
