@@ -56,7 +56,7 @@ public class PlayerInventory : MonoBehaviour{
             ItemData hitObject =collision.gameObject.GetComponent<Consumable>().Item;
             if (hitObject != null) {
                 print("Hit: " + hitObject.ObjectName);
-                bool shouldDisappear = false;
+                bool shouldDisappear = true;
                 switch (hitObject.Type) {
                 case ItemData.ItemType.Coin:
                     //shouldDisappear = true;
