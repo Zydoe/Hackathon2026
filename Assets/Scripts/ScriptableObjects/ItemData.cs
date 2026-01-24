@@ -6,17 +6,17 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public enum ItemType {
-        Coin,
         Health,
-        Key,
-        Medkit,
-        Fruit
+        Bomb,
+
     }
     [SerializeField] private string _objectName;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private int _quantity;
-    [SerializeField] private bool _isStackable; [SerializeField]
-    private ItemType _itemType;
+    [SerializeField] private bool _isStackable;
+    [SerializeField] private ItemType _itemType;
+
+    [SerializeField] private GameObject preFab;
     public string ObjectName {
         get { return _objectName;}
     }
@@ -32,6 +32,10 @@ public class ItemData : ScriptableObject
     }
     public ItemType Type {
         get {return _itemType;}
+    }
+    public GameObject Prefab
+    {
+        get {return preFab;}
     }
     // Start is called before the first frame update
     void Start()
