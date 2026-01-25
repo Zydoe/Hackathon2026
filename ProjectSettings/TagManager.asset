@@ -8,11 +8,12 @@ TagManager:
   - Megnetic
   - Magnetic
   - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Darkness
   - Water
   - UI
   - 
@@ -44,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Darkness
+    uniqueID: 2238922427
     locked: 0

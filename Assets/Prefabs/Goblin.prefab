@@ -135,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   coins: 0
+  maxHp: 10
   detectSound: {fileID: 8300000, guid: daccdd238350750458172af2031283ca, type: 3}
   deathSound: {fileID: 8300000, guid: 0425e185482619a4296b708ef338f659, type: 3}
   damagedSound: {fileID: 8300000, guid: 4885b4c17df801744b3bd622992e6128, type: 3}
@@ -454,7 +455,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.01
+  m_Radius: 3.19
 --- !u!114 &6579150054770155194
 MonoBehaviour:
   m_ObjectHideFlags: 0
