@@ -12,7 +12,6 @@ public class Ogre : Enemy
         SetHp(GetMaxHp());
         SetStrength(3);
         SetSpeed(0.4f);
-        SetCoins(100);
     }
 
     // Update is called once per frame

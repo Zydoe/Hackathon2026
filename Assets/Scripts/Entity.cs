@@ -7,7 +7,7 @@ public abstract class Entity : MonoBehaviour
     private float speed = 1;
     private int strength;
     private int stamina;
-    [SerializeField] private int coins = 0;
+    public int coins = 0;
     public float maxHp = 10;
 
     protected virtual void Update()
@@ -68,8 +68,10 @@ public abstract class Entity : MonoBehaviour
     }
 
     //So Player can heal
-    public bool AdjustHitPoints(int amount) {
-        if (hp < maxHp) {
+    public bool AdjustHitPoints(int amount)
+    {
+        if (hp < maxHp)
+        {
             hp += amount;
             return true;
         }
