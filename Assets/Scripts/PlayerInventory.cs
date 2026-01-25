@@ -97,6 +97,7 @@ public class PlayerInventory : MonoBehaviour{
         }
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
         GameObject bomb = Instantiate(item.Prefab, transform.position, Quaternion.identity); 
         
         if (bomb != null)

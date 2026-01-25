@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5853c75cd28cc4ea87a2f457f6f343, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  _objectName: 
-  _sprite: {fileID: 0}
-  _quantity: 0
+  _objectName: Bomb
+  _sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _quantity: 1
   _isStackable: 0
-  _itemType: 0
+  _itemType: 1
+  preFab: {fileID: 8251365644776554126, guid: 974d9f146c43e0541b24c39673c2acdb, type: 3}
