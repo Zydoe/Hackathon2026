@@ -43,7 +43,7 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) _inventory.SetSelectedSlot(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) _inventory.SetSelectedSlot(3);
         if (Input.GetKeyDown(KeyCode.Alpha5)) _inventory.SetSelectedSlot(4);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             print("USE ITEM");
             UseItem(_inventory.selectedIndex);
