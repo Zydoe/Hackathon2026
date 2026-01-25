@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   _objectName: Health
-  _sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  _sprite: {fileID: 1671388690, guid: e1af05f4f8551ca468172a64fa7a5b7f, type: 3}
   _quantity: 1
   _isStackable: 0
-  _itemType: 1
+  _itemType: 0
+  preFab: {fileID: 0}

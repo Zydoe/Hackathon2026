@@ -16,6 +16,8 @@ public class PlayerInventory : MonoBehaviour{
     [SerializeField] Inventory _inventoryPrefab; 
     private Inventory _inventory;
     
+    private bool inventoryInputEnabled = true;
+
 
     void Start() {
 
@@ -38,6 +40,10 @@ public class PlayerInventory : MonoBehaviour{
 
     void Update()
     {
+
+        if (!inventoryInputEnabled)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Alpha1)) _inventory.SetSelectedSlot(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) _inventory.SetSelectedSlot(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) _inventory.SetSelectedSlot(2);
@@ -122,6 +128,10 @@ public class PlayerInventory : MonoBehaviour{
             return true;
         }
         return false;
+    }
+    public void EnableInventoryInput(bool enabled)
+    {
+        inventoryInputEnabled = enabled;
     }
 
 
