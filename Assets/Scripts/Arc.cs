@@ -7,9 +7,11 @@ public class Arc : MonoBehaviour
 
     //Explosion
     [SerializeField] private float explosionRadius = 2.5f;
-    [SerializeField] private int damage = 2;
+    [SerializeField] private int damage = 7;
     [SerializeField] private LayerMask damageableLayers;
     private bool hasExploded = false;
+    public AudioSource audioSource;
+
     public IEnumerator TravelArc(Vector3 destination, float duration)
     {
         var startPosition = transform.position;
@@ -23,6 +25,7 @@ public class Arc : MonoBehaviour
             destination, percentComplete) + Vector3.up * currentHeight; yield
             return null;
         }
+        Explode();
 
         gameObject.SetActive(false);
     }
@@ -31,6 +34,7 @@ public class Arc : MonoBehaviour
         if (hasExploded) return;
         hasExploded = true;
 
+        audioSource.Play();
 
         // Find everything in radius
         Collider[] hits = Physics.OverlapSphere(
@@ -41,7 +45,7 @@ public class Arc : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            Entity damageable = hit.GetComponentInParent<Entity>();
+            Entity damageable = hit.GetComponent<Entity>();
             if (damageable != null)
             {
                 damageable.TakeDamage(damage);
