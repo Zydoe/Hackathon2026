@@ -8,6 +8,7 @@ public class ItemData : ScriptableObject
     public enum ItemType {
         Health,
         Bomb,
+        Dagger,
 
     }
     [SerializeField] private string _objectName;

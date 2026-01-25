@@ -32,9 +32,13 @@ public class GameSession : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Look for objects by name
-        // gameOverPanel = GameObject.Find("GameOverPanel");
-        // winPanel = GameObject.Find("WinPanel");
+        // find even if inactive
+        var goc = FindAnyObjectByType<GameOverController>(FindObjectsInactive.Include);
+        if (goc != null) gameOverPanel = goc.gameObject;
+
+        // (optional) same idea for win panel if you have a WinController
+        // var wc = FindAnyObjectByType<WinController>(FindObjectsInactive.Include);
+        // if (wc != null) winPanel = wc.gameObject;
 
         if (gameOverPanel) gameOverPanel.SetActive(false);
         if (winPanel) winPanel.SetActive(false);
