@@ -83,5 +83,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DarkColor: {r: 0, g: 0, b: 0, a: 0.85}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PlayerPos: {r: -0.2519744, g: 0.9202789, b: -1, a: 0}
+    - _PlayerPos: {r: 1.482713, g: 0.5199752, b: -1, a: 0}
   m_BuildTextureStacks: []

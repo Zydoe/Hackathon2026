@@ -13,6 +13,7 @@ public class HealthBar : MonoBehaviour
     public Entity Character;
     void Start()
     {
+        Character = GameObject.Find("Player").GetComponent<Player>();
         meterImage.fillAmount = 1;
         hpText.text = "10";
     }

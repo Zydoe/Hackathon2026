@@ -10,8 +10,8 @@ public class Enemy : Entity
     public AudioClip deathSound;
     public AudioClip damagedSound;
     public GameObject coinPrefab;
-    public float minExplosionForce = 0.05f;
-    public float maxExplosionForce = 0.5f;
+    public float minExplosionForce = 0.1f;
+    public float maxExplosionForce = 1f;
     private bool canAttack = true;
 
 
