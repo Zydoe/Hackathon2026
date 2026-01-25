@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Magnetic : MonoBehaviour
 {
-    public float pullSpeed = 1f;
+    public float pullSpeed = 0.11f;
     private Transform player;
     private bool isAttracted = false;
 
@@ -14,7 +14,7 @@ public class Magnetic : MonoBehaviour
         if (isAttracted && player != null)
         {
             // Move coin toward player
-            transform.position = Vector2.MoveTowards(
+            transform.position = Vector3.MoveTowards(
                 transform.position,
                 player.position,
                 pullSpeed * Time.deltaTime
@@ -28,6 +28,7 @@ public class Magnetic : MonoBehaviour
         {
             player = target.transform;
             isAttracted = true;
+            Debug.Log("Coin attracted to player");
         }
     }
 }
