@@ -57,6 +57,7 @@ MonoBehaviour:
   hp: 10
   coins: 0
   coinSound: {fileID: 8300000, guid: 726139e8ca6020f4ab1024463d8a9131, type: 3}
+  damagedSound: {fileID: 8300000, guid: 144455202f8fff647a05e888997cf302, type: 3}
 --- !u!114 &844611246628034810
 MonoBehaviour:
   m_ObjectHideFlags: 0

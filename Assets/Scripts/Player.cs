@@ -9,6 +9,7 @@ public class Player : Entity
     private int level = 0;
     private int experience = 0;
     public AudioClip coinSound;
+    public AudioClip damagedSound;
     private AudioSource audioSource;
     Transform hitbox;
 
@@ -36,6 +37,11 @@ public class Player : Entity
         base.Update();
     }
 
+    public override void TakeDamage(int damage)
+    {
+        audioSource.PlayOneShot(damagedSound);
+        base.TakeDamage(damage);
+    }
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
