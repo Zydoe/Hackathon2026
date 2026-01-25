@@ -38,8 +38,9 @@ public class WaveSpawnerFromCaves : MonoBehaviour
 
                 GameObject enemy = Instantiate(group.prefab, pos, Quaternion.identity);
 
-                // Make sure enemy is tagged Enemy for cleanup tools, optional
-                // enemy.tag = "Enemy"; // only if you want to force it
+                if (EnemyRegistry.Instance != null)
+                    EnemyRegistry.Instance.RegisterEnemy();
+
 
                 yield return new WaitForSeconds(wave.spawnInterval);
             }

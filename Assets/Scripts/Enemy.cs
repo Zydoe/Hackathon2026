@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public event Action EnemyDied;
+
 
     public GameObject coinPrefab;
     public float minExplosionForce = 0.05f;
@@ -37,7 +37,9 @@ public class Enemy : Entity
     }
     public override void OnDeath()
     {
-        EnemyDied?.Invoke(); //For the wave management to check if enemy died.
+        if (EnemyRegistry.Instance != null)
+            EnemyRegistry.Instance.UnregisterEnemy();
+
         DropCoins();
         base.OnDeath();
     }

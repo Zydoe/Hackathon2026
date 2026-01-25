@@ -6,21 +6,28 @@ public class EnemyRegistry : MonoBehaviour
 {
     public static EnemyRegistry Instance { get; private set; }
 
-    [SerializeField] public int AliveCount { get; private set; }
+    [SerializeField] private int aliveCount;
+
+    public int AliveCount => aliveCount; // read-only access
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
     }
 
     public void RegisterEnemy()
     {
-        AliveCount++;
+        aliveCount++;
     }
 
     public void UnregisterEnemy()
     {
-        AliveCount = Mathf.Max(0, AliveCount - 1);
+        aliveCount = Mathf.Max(0, aliveCount - 1);
     }
 }

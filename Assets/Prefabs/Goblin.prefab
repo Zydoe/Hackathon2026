@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   coins: 0
+  maxHp: 10
   coinPrefab: {fileID: 6506595569992889674, guid: 9beeb7dcc58889f46beadf2327e08e42, type: 3}
   minExplosionForce: 0.05
   maxExplosionForce: 0.5
@@ -192,7 +193,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -867373408, guid: 7411ad5fe09008c4da682e97ca9fa36e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
