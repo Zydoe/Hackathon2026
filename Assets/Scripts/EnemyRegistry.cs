@@ -6,7 +6,7 @@ public class EnemyRegistry : MonoBehaviour
 {
     public static EnemyRegistry Instance { get; private set; }
 
-    public int AliveCount { get; private set; }
+    [SerializeField] public int AliveCount { get; private set; }
 
     private void Awake()
     {

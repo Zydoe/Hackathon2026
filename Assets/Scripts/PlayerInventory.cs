@@ -8,8 +8,8 @@ using System.Diagnostics;
 public class PlayerInventory : MonoBehaviour{
 
 
-    public float currentHealth;
-    [SerializeField] public float maxHealth;
+    // public float currentHealth;
+    // [SerializeField] public float maxHealth;
     [SerializeField] private float bombVelocity = 2;
     [SerializeField] private HealthBar _healthBarPrefab; private
     HealthBar _healthBar;
@@ -18,22 +18,21 @@ public class PlayerInventory : MonoBehaviour{
     
 
     void Start() {
-    currentHealth = maxHealth;
 
-    // HealthBar: only create once
-    if (_healthBar == null)
-    {
-        _healthBar = Instantiate(_healthBarPrefab);
-        _healthBar.Character = this;
-        DontDestroyOnLoad(_healthBar.gameObject);
-    }
 
-    // Inventory: only create once
-    if (_inventory == null)
-    {
-        _inventory = Instantiate(_inventoryPrefab);
-        DontDestroyOnLoad(_inventory.gameObject);
-    }
+        // HealthBar: only create once
+        if (_healthBar == null)
+        {
+            _healthBar = Instantiate(_healthBarPrefab);
+            DontDestroyOnLoad(_healthBar.gameObject);
+        }
+
+        // Inventory: only create once
+        if (_inventory == null)
+        {
+            _inventory = Instantiate(_inventoryPrefab);
+            DontDestroyOnLoad(_inventory.gameObject);
+        }
     }
 
 
@@ -42,6 +41,8 @@ public class PlayerInventory : MonoBehaviour{
         if (Input.GetKeyDown(KeyCode.Alpha1)) _inventory.SetSelectedSlot(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) _inventory.SetSelectedSlot(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) _inventory.SetSelectedSlot(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) _inventory.SetSelectedSlot(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) _inventory.SetSelectedSlot(4);
         if (Input.GetMouseButtonDown(0))
         {
             print("USE ITEM");
@@ -61,7 +62,9 @@ public class PlayerInventory : MonoBehaviour{
             {
                 case ItemData.ItemType.Health:
 
-                    shouldDisappear = AdjustHitPoints(2);
+                    Entity entity = GetComponent<Entity>();
+                    shouldDisappear = entity.AdjustHitPoints(2);
+
                     break;
                 case ItemData.ItemType.Bomb:
 
@@ -90,15 +93,15 @@ public class PlayerInventory : MonoBehaviour{
     }
     
 
-    public bool AdjustHitPoints(int amount) {
-        if (currentHealth < maxHealth) {
-            currentHealth = currentHealth + amount;
-            print("Adjusted HP by: " + amount + ". New value: " +
-            currentHealth);
-            return true;
-        }
-        return false;
-    }
+    // public bool AdjustHitPoints(int amount) {
+    //     if (currentHealth < maxHealth) {
+    //         currentHealth = currentHealth + amount;
+    //         print("Adjusted HP by: " + amount + ". New value: " +
+    //         currentHealth);
+    //         return true;
+    //     }
+    //     return false;
+    // }
     public bool FireBomb(ItemData item)
     {
         if (item == null || item.Prefab == null)

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
-    [SerializeField] private int hp = 10;
+    [SerializeField] public float hp = 10;
     private float speed = 1;
     private int strength;
     private int stamina;
     [SerializeField] private int coins = 0;
-    private int maxHp = 10;
+    public float maxHp = 10;
 
     protected virtual void Update()
     {
@@ -18,9 +18,9 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    public int GetHp() => hp;
+    public float GetHp() => hp;
 
-    public void SetHp(int value)
+    public void SetHp(float value)
     {
         hp = value;
     }
@@ -30,8 +30,8 @@ public abstract class Entity : MonoBehaviour
     {
         coins = value;
     }
-    public int GetMaxHp() => maxHp;
-    public void SetMaxHp(int value)
+    public float GetMaxHp() => maxHp;
+    public void SetMaxHp(float value)
     {
         maxHp = value;
     }
@@ -65,6 +65,15 @@ public abstract class Entity : MonoBehaviour
             OnDeath();
         }
 
+    }
+
+    //So Player can heal
+    public bool AdjustHitPoints(int amount) {
+        if (hp < maxHp) {
+            hp += amount;
+            return true;
+        }
+        return false;
     }
 
     public virtual void OnDeath()

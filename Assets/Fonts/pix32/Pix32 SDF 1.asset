@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Pix32 SDF
+  m_Name: Pix32 SDF 1
   m_EditorClassIdentifier: 
-  hashCode: -988624719
+  hashCode: 1424473376
   material: {fileID: 8191805393088674719}
-  materialHashCode: 1616659953
+  materialHashCode: 175667968
   m_Version: 1.1.0
   m_SourceFontFileGUID: 1e3649858ecd84a44b71effa98a5b304
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 1e3649858ecd84a44b71effa98a5b304, type: 3}
@@ -2683,7 +2683,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - GLOW_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -2732,9 +2733,9 @@ Material:
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0
-    - _GlowOffset: 0
-    - _GlowOuter: 1
-    - _GlowPower: 0.75
+    - _GlowOffset: 0.24
+    - _GlowOuter: 0.714
+    - _GlowPower: 0.732
     - _GradientScale: 6
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
@@ -2742,7 +2743,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.7
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
