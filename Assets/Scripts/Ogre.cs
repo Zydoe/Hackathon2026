@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin : Enemy
+public class Ogre : Enemy
 {
-
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        SetMaxHp(3);
+        SetMaxHp(5);
         SetHp(GetMaxHp());
-        SetStrength(1);
-        SetSpeed(0.7f);
-        SetCoins(10);
+        SetStrength(3);
+        SetSpeed(0.4f);
+        SetCoins(100);
     }
 
     // Update is called once per frame
@@ -21,5 +20,4 @@ public class Goblin : Enemy
     {
         base.Update();
     }
-
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -10,7 +11,8 @@ public class playerController : MonoBehaviour
     public Player player;
     public float dashForce = 15f;
     private bool isDashing = false;
-
+    public AudioClip dashSound;
+    private AudioSource audioSource;
     public SpriteRenderer playerSR;
 
     public TrailRenderer dashTrail;
@@ -24,6 +26,7 @@ public class playerController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         moveSpeed = player.GetSpeed();
     }
     void Update()
@@ -73,6 +76,7 @@ public class playerController : MonoBehaviour
     {
         dashTrail.emitting = true;
         rb.velocity = movement * dashForce;
+        audioSource.PlayOneShot(dashSound);
         yield return new WaitForSeconds(durration);
         rb.velocity = Vector2.zero;
         dashTrail.emitting = false;
