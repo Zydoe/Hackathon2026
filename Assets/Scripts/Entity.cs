@@ -60,7 +60,8 @@ public abstract class Entity : MonoBehaviour
     public void TakeDamage(int value)
     {
         hp -= value;
-        if(hp<=0){
+        if (hp <= 0)
+        {
             OnDeath();
         }
 
@@ -70,4 +71,6 @@ public abstract class Entity : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+
 }

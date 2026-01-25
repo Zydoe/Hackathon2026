@@ -8,9 +8,12 @@ public class playerController : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public Player player;
+    public float dashForce = 15f;
+    private bool isDashing = false;
 
     public SpriteRenderer playerSR;
 
+    public TrailRenderer dashTrail;
     Vector2 movement;
     Vector2 lastMoveDir = Vector2.down; // default facing down
     public Transform attackHitbox;
@@ -49,6 +52,12 @@ public class playerController : MonoBehaviour
         anim.SetFloat("moveY", movement.y);
         anim.SetBool("isMoving", movement.sqrMagnitude > 0.1f);
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isDashing = true;
+            StartCoroutine(Dash(0.2f));
+        }
+
         // Attack input
         if (Input.GetMouseButtonUp(0))
         {
@@ -56,12 +65,26 @@ public class playerController : MonoBehaviour
             player.Attack();
         }
 
+
         UpdateHitboxDirection();
+    }
+
+    IEnumerator Dash(float durration)
+    {
+        dashTrail.emitting = true;
+        rb.velocity = movement * dashForce;
+        yield return new WaitForSeconds(durration);
+        rb.velocity = Vector2.zero;
+        dashTrail.emitting = false;
+        isDashing = false;
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (!isDashing)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 
 

@@ -11,7 +11,7 @@ public class Goblin : Enemy
         SetMaxHp(3);
         SetHp(GetMaxHp());
         SetStrength(2);
-        SetSpeed(1.2f);
+        SetSpeed(0.9f);
         SetCoins(10);
     }
 
