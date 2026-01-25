@@ -1,4 +1,4 @@
-﻿namespace Hackathon2026;
+﻿namespace Hackathon2026{
 
 public class Goblin : Entity
 {
@@ -8,4 +8,5 @@ public class Goblin : Entity
     {
         
     }
+}
 }

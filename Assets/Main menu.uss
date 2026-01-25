@@ -1,0 +1,21 @@
+.Panel {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/Sprites/MAP.aseprite?fileID=-8328923581568760697&guid=f4162d74a531c804e9c06d7bee51348f&type=3#MAP");
+    align-items: center;
+}
+
+.menu {
+}
+
+.unity-button {
+}
+
+.unity-button:hover {
+    scale: 1.1 1.1;
+    opacity: 1;
+    background-color: rgba(56, 56, 56, 0);
+    border-left-color: rgba(56, 56, 56, 0);
+    border-right-color: rgba(56, 56, 56, 0);
+    border-top-color: rgba(56, 56, 56, 0);
+    border-bottom-color: rgba(56, 56, 56, 0);
+}

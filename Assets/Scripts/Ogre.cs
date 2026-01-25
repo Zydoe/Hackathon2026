@@ -1,4 +1,4 @@
-﻿namespace Hackathon2026;
+﻿namespace Hackathon2026{
 
 public class Ogre : Entity
 {
@@ -7,4 +7,5 @@ public class Ogre : Entity
     {
         
     }
+}
 }
