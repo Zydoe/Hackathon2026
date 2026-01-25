@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : Entity
 {
@@ -8,10 +9,23 @@ public class Player : Entity
     private int level = 0;
     private int experience = 0;
     Transform hitbox;
+
+    public static Player Instance;
+
     // Start is called before the first frame update
     void Awake()
     {
         hitbox = transform.Find("AttackHitbox");
+
+        // If another Player already exists, delete this one (the scene copy)
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -29,6 +43,8 @@ public class Player : Entity
     }
     public void Attack()
     {
+        DontDestroyOnLoad(gameObject);
+
         hitbox.GetComponent<Collider2D>().enabled = true;
         // Implement attack logic here
         StartCoroutine(DisableHitboxAfterDelay(0.2f));
@@ -53,6 +69,7 @@ public class Player : Entity
 
     public void AddCoins(int amount)
     {
+        
         SetCoins(GetCoins() + amount);
     }
     public int GetLevel() => level;

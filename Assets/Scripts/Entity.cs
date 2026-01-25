@@ -60,6 +60,9 @@ public abstract class Entity : MonoBehaviour
     public void TakeDamage(int value)
     {
         hp -= value;
+        if(hp<=0){
+            OnDeath();
+        }
 
     }
 

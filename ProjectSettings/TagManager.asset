@@ -7,6 +7,7 @@ TagManager:
   - PickUp
   - Megnetic
   - Magnetic
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Enemy : Entity
 {
+    public event Action EnemyDied;
+
     public GameObject coinPrefab;
     public float minExplosionForce = 0.05f;
     public float maxExplosionForce = 0.5f;
@@ -23,6 +24,7 @@ public class Enemy : Entity
 
     public override void OnDeath()
     {
+        EnemyDied?.Invoke(); //For the wave management to check if enemy died.
         DropCoins();
         Destroy(gameObject);
     }
@@ -39,8 +41,8 @@ public class Enemy : Entity
             );
 
             // Give it a random explosion direction
-            Vector2 dir = Random.insideUnitCircle;
-            float force = Random.Range(minExplosionForce, maxExplosionForce);
+            Vector2 dir = UnityEngine.Random.insideUnitCircle;
+            float force = UnityEngine.Random.Range(minExplosionForce, maxExplosionForce);
 
 
             // Apply force

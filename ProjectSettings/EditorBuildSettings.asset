@@ -8,7 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 692f1c2f63deb40c7a920cecf34e5153
+  - enabled: 1
+    path: Assets/Scenes/Hackathon2026 1.unity
+    guid: c902ae8fb2bce71409c4051e408ed3f6
+  - enabled: 1
+    path: Assets/Scenes/VillageScene.unity
+    guid: cd8e15c2918e08842a93caf3bc70a8d1
   m_configObjects: {}

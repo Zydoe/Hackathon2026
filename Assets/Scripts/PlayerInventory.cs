@@ -18,11 +18,22 @@ public class PlayerInventory : MonoBehaviour{
     
 
     void Start() {
-        currentHealth = maxHealth;
+    currentHealth = maxHealth;
+
+    // HealthBar: only create once
+    if (_healthBar == null)
+    {
         _healthBar = Instantiate(_healthBarPrefab);
         _healthBar.Character = this;
+        DontDestroyOnLoad(_healthBar.gameObject);
+    }
 
+    // Inventory: only create once
+    if (_inventory == null)
+    {
         _inventory = Instantiate(_inventoryPrefab);
+        DontDestroyOnLoad(_inventory.gameObject);
+    }
     }
 
 

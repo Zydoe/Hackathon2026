@@ -107,11 +107,8 @@ public class Inventory : MonoBehaviour
     {
         foreach (ItemData i in _items)
         {
-            if(i == null){
-                return false;
-            }
-            if (i.Type == item)
-                return true;
+            if (i == null) continue;
+            if (i.Type == item) return true;
         }
         return false;
 
