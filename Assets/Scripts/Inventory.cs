@@ -102,7 +102,7 @@ public class Inventory : MonoBehaviour
         }
 
     }
-        //Check if player has the item
+    //Check if player has the item
     public bool HasItem(ItemData.ItemType item)
     {
         foreach (ItemData i in _items)
