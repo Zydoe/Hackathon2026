@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-
-
+    public event Action EnemyDied;
+    protected AudioSource audioSource;
+    public AudioClip detectSound;
+    public AudioClip deathSound;
+    public AudioClip damagedSound;
     public GameObject coinPrefab;
     public float minExplosionForce = 0.05f;
     public float maxExplosionForce = 0.5f;
     private bool canAttack = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     protected override void Update()
@@ -40,8 +39,31 @@ public class Enemy : Entity
         if (EnemyRegistry.Instance != null)
             EnemyRegistry.Instance.UnregisterEnemy();
 
+        // Create a temporary audio object
+        if (deathSound != null)
+        {
+            GameObject audioObj = new GameObject("DeathSound");
+            AudioSource tempSource = audioObj.AddComponent<AudioSource>();
+            tempSource.clip = deathSound;
+            tempSource.Play();
+
+            // Destroy the audio object after the clip finishes
+            Destroy(audioObj, deathSound.length);
+        }
+
         DropCoins();
         base.OnDeath();
+    }
+
+    public virtual void PlayDetectSound()
+    {
+        audioSource.PlayOneShot(detectSound);
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        audioSource.PlayOneShot(damagedSound);
     }
 
     public void DropCoins()

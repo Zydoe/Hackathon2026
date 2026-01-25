@@ -57,7 +57,7 @@ public abstract class Entity : MonoBehaviour
     {
         stamina = value;
     }
-    public void TakeDamage(int value)
+    public virtual void TakeDamage(int value)
     {
         hp -= value;
         if (hp <= 0)

@@ -8,6 +8,8 @@ public class Player : Entity
     private string playerName = "Johnny";
     private int level = 0;
     private int experience = 0;
+    public AudioClip coinSound;
+    private AudioSource audioSource;
     Transform hitbox;
 
     public static Player Instance;
@@ -36,6 +38,7 @@ public class Player : Entity
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         SetSpeed(1);
         SetStrength(1);
         SetMaxHp(10);
@@ -69,7 +72,7 @@ public class Player : Entity
 
     public void AddCoins(int amount)
     {
-        
+        audioSource.PlayOneShot(coinSound);
         SetCoins(GetCoins() + amount);
     }
     public int GetLevel() => level;

@@ -11,7 +11,7 @@ public class Collectable : MonoBehaviour
         {
             if (gameObject.CompareTag("Coin"))
             {
-                Debug.Log("Player collected a coin!");
+
                 other.GetComponent<Player>().AddCoins(1);
             }
             // else if (gameObject.CompareTag("HealthPack"))
