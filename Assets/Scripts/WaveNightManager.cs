@@ -32,11 +32,11 @@ public class WaveNightManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameSession.Instance == null)
-        {
-            var go = new GameObject("GameSession");
-            go.AddComponent<GameSession>();
-        }
+        // if (GameSession.Instance == null)
+        // {
+        //     var go = new GameObject("GameSession");
+        //     go.AddComponent<GameSession>();
+        // }
 
         StartCoroutine(RunNight());
     }

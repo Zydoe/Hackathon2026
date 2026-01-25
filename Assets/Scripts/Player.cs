@@ -31,6 +31,15 @@ public class Player : Entity
         DontDestroyOnLoad(gameObject);
     }
 
+    public void ResetStats()
+    {
+        SetSpeed(1);
+        SetStrength(1);
+        SetMaxHp(10);
+        SetHp(GetMaxHp());
+        SetCoins(0);
+    }
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -93,5 +102,12 @@ public class Player : Entity
     public void SetExperience(int value)
     {
         experience = value;
+    }
+    public override void OnDeath()
+    {
+        if (GameSession.Instance != null)
+            GameSession.Instance.GameOver();
+
+        // gameObject.SetActive(false);
     }
 }
