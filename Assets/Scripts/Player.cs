@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    private PlayerData playerData;
+    private string playerName = "Johnny";
+    private int level = 0;
+    private int experience = 0;
+    Transform hitbox;
     // Start is called before the first frame update
     void Awake()
     {
-        playerData = new PlayerData("Hero", 1, 0, 10, 1, 1, 20);
+        hitbox = transform.Find("AttackHitbox");
     }
 
     // Update is called once per frame
@@ -17,64 +20,41 @@ public class Player : MonoBehaviour
 
     }
 
-
-    public string GetPlayerName()
+    void Start()
     {
-        return playerData.GetPlayerName();
+        SetSpeed(1);
+    }
+    public void Attack()
+    {
+        hitbox.GetComponent<Collider2D>().enabled = true;
+        // Implement attack logic here
+        Debug.Log("Player attacked with strength: " + GetStrength());
+    }
+    public int GetAttackDamage()
+    {
+        return GetStrength();
     }
 
-    public int GetPlayerLevel()
+
+    //getters and setters
+    public string GetPlayerName() => playerName;
+
+    public void SetPlayerName(string value)
     {
-        return playerData.GetLevel();
+        playerName = value;
     }
 
-    public int GetPlayerHp()
+    public int GetLevel() => level;
+
+    public void SetLevel(int value)
     {
-        return playerData.GetHp();
+        level = value;
     }
 
-    public void SetPlayerHp(int hp)
-    {
-        playerData.SetHp(hp);
-    }
+    public int GetExperience() => experience;
 
-    public int GetPlayerMaxHp()
+    public void SetExperience(int value)
     {
-        return playerData.GetMaxHp();
-    }
-
-    public void SetPlayerMaxHp(int maxHp)
-    {
-        playerData.SetMaxHp(maxHp);
-    }
-
-    public int GetPlayerSpeed()
-    {
-        return playerData.GetSpeed();
-    }
-
-    public void SetPlayerSpeed(int speed)
-    {
-        playerData.SetSpeed(speed);
-    }
-
-    public int GetPlayerStrength()
-    {
-        return playerData.GetStrength();
-    }
-
-    public void SetPlayerStrength(int strength)
-    {
-        playerData.SetStrength(strength);
-    }
-
-    public int GetPlayerStamina()
-    {
-        return playerData.GetStamina();
-    }
-
-    public void SetPlayerStamina(int stamina)
-    {
-        playerData.SetStamina(stamina);
+        experience = value;
     }
 }

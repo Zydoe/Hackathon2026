@@ -1102,6 +1102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 10
+  bombVelocity: 2
   _healthBarPrefab: {fileID: 3906576221406484519, guid: d5816406ed7faf64bad499591670f1cb, type: 3}
   _inventoryPrefab: {fileID: 3232752821740084398, guid: 7a3841ed6dce5c140853633dc195ae2d, type: 3}
 --- !u!114 &2118782865

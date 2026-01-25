@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Goblin : Enemy
+{
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        SetMaxHp(3);
+        SetHp(GetMaxHp());
+        SetStrength(2);
+        SetSpeed(1.2f);
+        SetCoins(5);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}

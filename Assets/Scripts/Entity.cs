@@ -1,21 +1,17 @@
 using System.Diagnostics;
-
-public abstract class Entity
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+public abstract class Entity : MonoBehaviour
 {
     private int hp;
-    private int speed;
+    private float speed = 1;
     private int strength;
     private int stamina;
+    private int coins = 0;
+    private int maxHp = 10;
 
-    private int maxHp;
 
-    protected Entity(int hp, int speed, int strength, int stamina)
-    {
-        this.hp = hp;
-        this.speed = speed;
-        this.strength = strength;
-        this.stamina = stamina;
-    }
 
     public int GetHp() => hp;
 
@@ -24,14 +20,21 @@ public abstract class Entity
         hp = value;
     }
 
+    public int GetCoins() => coins;
+    public void SetCoins(int value)
+    {
+        coins = value;
+    }
     public int GetMaxHp() => maxHp;
     public void SetMaxHp(int value)
     {
         maxHp = value;
     }
-    public int GetSpeed() => speed;
 
-    public void SetSpeed(int value)
+
+    public float GetSpeed() => speed;
+
+    public void SetSpeed(float value)
     {
         speed = value;
     }
@@ -52,6 +55,11 @@ public abstract class Entity
     public void TakeDamage(int value)
     {
         hp -= value;
-        
+
+    }
+
+    public virtual void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }

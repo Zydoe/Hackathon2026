@@ -12,15 +12,26 @@ public class playerController : MonoBehaviour
     public SpriteRenderer playerSR;
 
     Vector2 movement;
+    Vector2 lastMoveDir = Vector2.down; // default facing down
+    public Transform attackHitbox;
+
+
+
+
 
     void Start()
     {
-        moveSpeed = player.GetPlayerSpeed();
+        moveSpeed = player.GetSpeed();
     }
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movement.sqrMagnitude > 0.1f)
+        {
+            lastMoveDir = movement.normalized;
+        }
 
         if (movement.sqrMagnitude > 1)
             movement.Normalize();
@@ -42,15 +53,21 @@ public class playerController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             anim.SetTrigger("attack");
+            player.Attack();
         }
 
-
+        UpdateHitboxDirection();
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
     }
 
+
+    void UpdateHitboxDirection()
+    {
+        float angle = Mathf.Atan2(lastMoveDir.y, lastMoveDir.x) * Mathf.Rad2Deg;
+        attackHitbox.localRotation = Quaternion.Euler(0, 0, angle - 270f);
+    }
 }
