@@ -12,6 +12,7 @@ Shader "Custom/RadialLight"
     {
         Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off        // ⭐ THIS FIXES ENEMIES BEING INVISIBLE
 
         Pass
         {
@@ -46,10 +47,8 @@ Shader "Custom/RadialLight"
             {
                 float dist = distance(i.worldPos.xy, _PlayerPos.xy);
 
-                // 0 inside radius, 1 outside radius
                 float t = saturate((dist - _Radius) / _Softness);
 
-                // DarkColor alpha fades in smoothly
                 return float4(_DarkColor.rgb, t * _DarkColor.a);
             }
             ENDCG
