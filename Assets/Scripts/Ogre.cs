@@ -8,9 +8,9 @@ public class Ogre : Enemy
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        SetMaxHp(5);
+        SetMaxHp(7);
         SetHp(GetMaxHp());
-        SetStrength(3);
+        SetStrength(2);
         SetSpeed(0.4f);
     }
 
