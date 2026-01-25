@@ -7,6 +7,8 @@ public abstract class Entity
     private int strength;
     private int stamina;
 
+    private int maxHp;
+
     protected Entity(int hp, int speed, int strength, int stamina)
     {
         this.hp = hp;
@@ -22,6 +24,11 @@ public abstract class Entity
         hp = value;
     }
 
+    public int GetMaxHp() => maxHp;
+    public void SetMaxHp(int value)
+    {
+        maxHp = value;
+    }
     public int GetSpeed() => speed;
 
     public void SetSpeed(int value)
