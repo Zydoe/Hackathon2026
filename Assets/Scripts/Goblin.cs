@@ -13,7 +13,6 @@ public class Goblin : Enemy
         SetHp(GetMaxHp());
         SetStrength(1);
         SetSpeed(0.7f);
-        SetCoins(10);
     }
 
     // Update is called once per frame

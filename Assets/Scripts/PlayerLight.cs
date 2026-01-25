@@ -9,6 +9,9 @@ public class PlayerLight : MonoBehaviour
 
     void Update()
     {
-        mat.SetVector("_PlayerPos", player.position);
+        if (mat != null)
+        {
+            mat.SetVector("_PlayerPos", player.position);
+        }
     }
 }

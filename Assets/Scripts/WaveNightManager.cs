@@ -26,6 +26,7 @@ public class WaveNightManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip waveStartHorn;
     [SerializeField] private AudioClip waveEndHorn;
+    public GameObject Ogre;
 
     [Header("Wave Presets")]
     [SerializeField] private List<WaveConfig> wavePresets = new List<WaveConfig>();
@@ -46,6 +47,10 @@ public class WaveNightManager : MonoBehaviour
         int night = GameSession.Instance.NightNumber;
         int wavesThisNight = night;
 
+        if (night == 3)
+        {
+            Ogre.SetActive(true);
+        }
         if (wavePresets.Count > 0)
             wavesThisNight = Mathf.Min(wavesThisNight, wavePresets.Count);
 
