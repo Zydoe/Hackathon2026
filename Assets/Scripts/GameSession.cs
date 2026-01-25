@@ -80,6 +80,7 @@ public class GameSession : MonoBehaviour
         Time.timeScale = 1f;
         ended = false;
         HideAll();
+        NightNumber = 1;
     
         if (Player.Instance != null)
         Destroy(Player.Instance.gameObject);
