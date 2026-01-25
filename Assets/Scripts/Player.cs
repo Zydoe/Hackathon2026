@@ -15,27 +15,34 @@ public class Player : Entity
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
 
     void Start()
     {
         SetSpeed(1);
+        SetStrength(1);
+        SetMaxHp(10);
+        SetHp(GetMaxHp());
     }
     public void Attack()
     {
         hitbox.GetComponent<Collider2D>().enabled = true;
         // Implement attack logic here
-        Debug.Log("Player attacked with strength: " + GetStrength());
+        StartCoroutine(DisableHitboxAfterDelay(0.2f));
     }
     public int GetAttackDamage()
     {
         return GetStrength();
     }
 
-
+    IEnumerator DisableHitboxAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        hitbox.GetComponent<Collider2D>().enabled = false;
+    }
     //getters and setters
     public string GetPlayerName() => playerName;
 
@@ -44,6 +51,10 @@ public class Player : Entity
         playerName = value;
     }
 
+    public void AddCoins(int amount)
+    {
+        SetCoins(GetCoins() + amount);
+    }
     public int GetLevel() => level;
 
     public void SetLevel(int value)

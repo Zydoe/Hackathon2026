@@ -9,6 +9,15 @@ public class Collectable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (gameObject.CompareTag("Coin"))
+            {
+                Debug.Log("Player collected a coin!");
+                other.GetComponent<Player>().AddCoins(1);
+            }
+            // else if (gameObject.CompareTag("HealthPack"))
+            // {
+            //     Debug.Log("Player collected a health pack!");
+            // }
             // Here you can add code to update player's inventory or score
             Destroy(gameObject); // Remove the collectable from the scene
         }

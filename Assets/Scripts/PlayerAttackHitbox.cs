@@ -14,10 +14,11 @@ public class PlayerAttackHitbox : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.parent.GetComponent<Enemy>() != null)
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
             enemy.TakeDamage(player.GetAttackDamage()); // Example damage value
+            Debug.Log("Enemy hit for damage: " + player.GetAttackDamage());
         }
     }
 }

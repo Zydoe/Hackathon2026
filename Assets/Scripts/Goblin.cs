@@ -12,12 +12,12 @@ public class Goblin : Enemy
         SetHp(GetMaxHp());
         SetStrength(2);
         SetSpeed(1.2f);
-        SetCoins(5);
+        SetCoins(10);
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
 }

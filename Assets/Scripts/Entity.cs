@@ -1,17 +1,22 @@
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
-    private int hp;
+    [SerializeField] private int hp = 10;
     private float speed = 1;
     private int strength;
     private int stamina;
-    private int coins = 0;
+    [SerializeField] private int coins = 0;
     private int maxHp = 10;
 
-
+    protected virtual void Update()
+    {
+        if (hp <= 0)
+        {
+            this.OnDeath();
+        }
+    }
 
     public int GetHp() => hp;
 

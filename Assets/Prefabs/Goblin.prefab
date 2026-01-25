@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3a42bd67e4a1745a3385180ab099b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 10
+  coins: 0
+  coinPrefab: {fileID: 6506595569992889674, guid: 9beeb7dcc58889f46beadf2327e08e42, type: 3}
 --- !u!212 &8098862105671157549
 SpriteRenderer:
   m_ObjectHideFlags: 0
