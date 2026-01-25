@@ -1064,7 +1064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1098049278964347674, guid: e7032257067b6804384d85dce5a1e0ee, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2098494503354381760, guid: e7032257067b6804384d85dce5a1e0ee, type: 3}
       propertyPath: coinText
@@ -1187,13 +1187,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombVelocity: 2
-  _healthBarPrefab: {fileID: 3906576221406484519, guid: d5816406ed7faf64bad499591670f1cb, type: 3}
   _inventoryPrefab: {fileID: 3232752821740084398, guid: 7a3841ed6dce5c140853633dc195ae2d, type: 3}
 --- !u!4 &2118782866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6420694995142109160, guid: e7032257067b6804384d85dce5a1e0ee, type: 3}
   m_PrefabInstance: {fileID: 1817627499}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2118782867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2098494503354381760, guid: e7032257067b6804384d85dce5a1e0ee, type: 3}
+  m_PrefabInstance: {fileID: 1817627499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118782859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9433d4cd35f6d4283fccd52fb36863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5087464923809481697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1420,6 +1430,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8952634489294551554, guid: a63879ae35e10d4439761f826b9cef19, type: 3}
+      propertyPath: Character
+      value: 
+      objectReference: {fileID: 2118782867}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -5,29 +5,23 @@ using System.Collections;
 using System.Diagnostics.Contracts;
 using System.Diagnostics;
 
-public class PlayerInventory : MonoBehaviour{
+public class PlayerInventory : MonoBehaviour
+{
 
 
     // public float currentHealth;
     // [SerializeField] public float maxHealth;
     [SerializeField] private float bombVelocity = 2;
-    [SerializeField] private HealthBar _healthBarPrefab; private
-    HealthBar _healthBar;
-    [SerializeField] Inventory _inventoryPrefab; 
+    [SerializeField] Inventory _inventoryPrefab;
     private Inventory _inventory;
-    
+
     private bool inventoryInputEnabled = true;
 
 
-    void Start() {
+    void Start()
+    {
 
 
-        // HealthBar: only create once
-        if (_healthBar == null)
-        {
-            _healthBar = Instantiate(_healthBarPrefab);
-            DontDestroyOnLoad(_healthBar.gameObject);
-        }
 
         // Inventory: only create once
         if (_inventory == null)
@@ -87,17 +81,20 @@ public class PlayerInventory : MonoBehaviour{
 
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("PickUp")) {
-            ItemData hitObject =collision.gameObject.GetComponent<Consumable>().Item;
-            if (hitObject != null) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PickUp"))
+        {
+            ItemData hitObject = collision.gameObject.GetComponent<Consumable>().Item;
+            if (hitObject != null)
+            {
                 _inventory.AddItem(hitObject);
                 collision.gameObject.SetActive(false);
 
             }
         }
     }
-    
+
 
     // public bool AdjustHitPoints(int amount) {
     //     if (currentHealth < maxHealth) {
@@ -118,8 +115,8 @@ public class PlayerInventory : MonoBehaviour{
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f;
-        GameObject bomb = Instantiate(item.Prefab, transform.position, Quaternion.identity); 
-        
+        GameObject bomb = Instantiate(item.Prefab, transform.position, Quaternion.identity);
+
         if (bomb != null)
         {
             Arc arcScript = bomb.GetComponent<Arc>();

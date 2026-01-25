@@ -8,22 +8,17 @@ using TMPro;
 public class HealthBar : MonoBehaviour
 {
     // [SerializeField] private HitPoints _hitPoints;
-    [SerializeField] private Image _meterImage; [SerializeField]
-    private TextMeshProUGUI _hpText; 
-    [SerializeField]private Entity _character;
-    public Entity Character {
-        get {return _character;}
-        set {_character = value;}
-    }
+    public Image meterImage;
+    public TextMeshProUGUI hpText;
+    public Entity Character;
     void Start()
     {
-        if (_character == null && Player.Instance != null)
-        _character = Player.Instance;
+        meterImage.fillAmount = 1;
+        hpText.text = "10";
     }
-    void Update() {
-        if (_character != null) {
-            _meterImage.fillAmount = _character.hp / _character.maxHp;
-            _hpText.text = "HP:" + (_meterImage.fillAmount * 100);
-        }
+    void Update()
+    {
+        meterImage.fillAmount = Character.GetHp() / Character.GetMaxHp();
+        hpText.text = Character.GetHp().ToString("0");
     }
 }

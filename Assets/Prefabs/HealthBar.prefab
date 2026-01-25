@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 66.46539, y: 10.1704}
+  m_AnchoredPosition: {x: 281, y: 32}
   m_SizeDelta: {x: 106.9308, y: 11.6592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2299242965562260170
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP: 100'
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47ed065214e388a42918d3c934102618, type: 2}
   m_sharedMaterial: {fileID: 8191805393088674719, guid: 47ed065214e388a42918d3c934102618, type: 2}
@@ -249,9 +249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701ef2cf9c914724d9a7f272172b4880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meterImage: {fileID: 4330241165977176926}
-  _hpText: {fileID: 2080025103403003365}
-  _character: {fileID: 0}
+  meterImage: {fileID: 4330241165977176926}
+  hpText: {fileID: 2080025103403003365}
+  Character: {fileID: 0}
 --- !u!1 &4287281670323505460
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8989254139719734378
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16264686, g: 0.25703108, b: 0.8018868, a: 1}
+  m_Color: {r: 0.16264686, g: 0.25703108, b: 0.8018868, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
